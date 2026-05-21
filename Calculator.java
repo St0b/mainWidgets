@@ -70,7 +70,6 @@ public class Calculator {
             JButton source = (JButton) e.getSource();
             String command = source.getText();
             
-            // Цифры
             if (command.matches("[0-9]")) {
                 if (startNewNumber) {
                     displayField.setText(command);
