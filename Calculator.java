@@ -1,7 +1,7 @@
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.*;
 
 public class Calculator {
     
@@ -24,7 +24,6 @@ public class Calculator {
         frame.setLayout(new BorderLayout(5, 5));
         frame.setResizable(false);
         
-        // Поле для отображения
         displayField = new JTextField("0");
         displayField.setFont(new Font("Segoe UI", Font.BOLD, 32));
         displayField.setHorizontalAlignment(JTextField.RIGHT);
@@ -33,11 +32,9 @@ public class Calculator {
         displayField.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         frame.add(displayField, BorderLayout.NORTH);
         
-        // Панель с кнопками
         JPanel buttonPanel = new JPanel(new GridLayout(5, 4, 5, 5));
         buttonPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         
-        // Надписи на кнопках
         String[] buttons = {
             "7", "8", "9", "/",
             "4", "5", "6", "*",
@@ -45,14 +42,12 @@ public class Calculator {
             "0", "C", "=", "+"
         };
         
-        // Создаём кнопки и добавляем обработчики
         for (String text : buttons) {
             JButton button = new JButton(text);
             button.setFont(new Font("Segoe UI", Font.BOLD, 20));
             button.setFocusPainted(false);
             button.setBackground(new Color(240, 240, 240));
             
-            // Операторы выделяем цветом
             if (text.equals("+") || text.equals("-") || text.equals("*") || text.equals("/")) {
                 button.setBackground(new Color(255, 200, 100));
             } else if (text.equals("=")) {
@@ -89,7 +84,6 @@ public class Calculator {
                     }
                 }
             }
-            // Очистка
             else if (command.equals("C")) {
                 firstNumber = 0;
                 secondNumber = 0;
@@ -97,7 +91,6 @@ public class Calculator {
                 displayField.setText("0");
                 startNewNumber = true;
             }
-            // Операторы
             else if (command.equals("+") || command.equals("-") || command.equals("*") || command.equals("/")) {
                 if (!operator.isEmpty() && !startNewNumber) {
                     calculateResult();
@@ -106,7 +99,6 @@ public class Calculator {
                 operator = command;
                 startNewNumber = true;
             }
-            // Равно
             else if (command.equals("=")) {
                 if (!operator.isEmpty() && !startNewNumber) {
                     calculateResult();
